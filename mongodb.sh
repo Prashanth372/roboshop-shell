@@ -3,8 +3,8 @@
 DATE=$(date +%F)
 LOGSDIR=/tmp
 # /home/centos/shellscript-logs/script-name-date.log
-LOGFILE=$LOGSDIR/$0-$DATE.log
 SCRIPT_NAME=$0
+LOGFILE=$LOGSDIR/$0-$DATE.log
 USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
@@ -31,7 +31,7 @@ cp mongo.repo /etc/yum.repos.d/mongo.repo &>>LOGFILE
 
 VALIDATE $? "Copied MongoDB repo into yum.repos.d"
 
-yum install mongodb-org -y &>>LOGFILE
+yum install mongod-org -y &>>LOGFILE
 
 VALIDATE $? "Installation of MongoDB"
 
