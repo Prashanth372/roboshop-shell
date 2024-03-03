@@ -33,7 +33,7 @@ VALIDATE $? "Copied MongoDB repo into yum.repos.d"
 
 yum update &>>LOGFILE
 
-yum install mongodb-org -y &>>LOGFILE
+dnf install mongodb-org -y &>>LOGFILE
 
 VALIDATE $? "Installation of MongoDB"
 
