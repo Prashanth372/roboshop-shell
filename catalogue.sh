@@ -27,12 +27,13 @@ VALIDATE(){
     fi
 }    
 
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOGFILE
+dnf module disable nodejs -y &>>$LOGFILE
+VALIDATE $? "Module disabled nodeJS"
 
-VALIDATE $? "Setting up NPM Source"
+dnf module enable nodejs:18 -y &>>$LOGFILE
+VALIDATE $? "Enable NodeJS 18 version"
 
-yum install nodejs -y  &>>$LOGFILE
-
+dnf install nodejs -y  &>>$LOGFILE
 VALIDATE $? "Installing NodeJS"
 
 
@@ -55,6 +56,8 @@ VALIDATE $? "Moving to app directory"
 unzip /tmp/catalogue.zip &>>$LOGFILE
 
 VALIDATE $? "Unzipping catalogue"
+
+cd /app &>>$LOGFILE
 
 npm install &>>$LOGFILE
 
@@ -81,7 +84,7 @@ cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGFIL
 
 VALIDATE $? "Copying mongo.repo"
 
-yum install mongodb-org-shell -y &>>$LOGFILE
+dnf install mongodb-org-shell -y &>>$LOGFILE
 
 VALIDATE $? "Installing Mongo Client"
 
