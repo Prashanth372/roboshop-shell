@@ -92,3 +92,5 @@ mongo --host mongodb.suvarnalaxmiinfradevelopers.online </app/schema/user.js &>>
 
 VALIDATE $? "Loading user data into mongoDB"
 
+#validate
+
