@@ -69,7 +69,7 @@ systemctl daemon-reload &>>$LOGFILE
 
 VALIDATE $? "daemon-reload"
 
-npm audit fix &>>$LOGFILE
+sudo npm audit fix &>>$LOGFILE
 
 VALIDATE $? "npm audit fix"
 
