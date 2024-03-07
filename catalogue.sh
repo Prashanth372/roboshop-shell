@@ -53,7 +53,7 @@ cd /app  &>>$LOGFILE
 
 VALIDATE $? "Moving to app directory"
 
-unzip /tmp/catalogue.zip &>>$LOGFILE
+unzip /tmp/catalogue.zip -y &>>$LOGFILE
 
 VALIDATE $? "Unzipping catalogue"
 
