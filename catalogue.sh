@@ -69,6 +69,10 @@ systemctl daemon-reload &>>$LOGFILE
 
 VALIDATE $? "daemon-reload"
 
+ npm audit fix  &>>$LOGFILE
+
+ VALIDATE $? "npm audit fix"
+
 systemctl enable catalogue &>>$LOGFILE
 
 VALIDATE $? "enabling catalogue"
