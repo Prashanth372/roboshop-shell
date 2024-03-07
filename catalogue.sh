@@ -39,16 +39,16 @@ VALIDATE $? "Installing NodeJS"
 #Once user is created, if you run this script 2nd time then it will be fail
 #this command will defintely fail
 # IMPROVEMENT : Firest check the user already exist or not, if not exist then create
-####useradd roboshop &>>$LOGFILE
+useradd roboshop &>>$LOGFILE
 
 #write a condition to check if directory already exist or not
-######mkdir /app &>>$LOGFILE
+mkdir /app &>>$LOGFILE
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
 
 VALIDATE $? "Downloading catalogue artifact"
 
-cd /app  &>>$LOGFILE
+cd /app &>>$LOGFILE
 
 VALIDATE $? "Moving to app directory"
 
@@ -56,7 +56,7 @@ unzip /tmp/catalogue.zip &>>$LOGFILE
 
 VALIDATE $? "Unzipping catalogue"
 
-npm install  &>>$LOGFILE
+npm install &>>$LOGFILE
 
 VALIDATE $? "Installing dependencies"
 
@@ -69,9 +69,9 @@ systemctl daemon-reload &>>$LOGFILE
 
 VALIDATE $? "daemon-reload"
 
- npm audit fix  &>>$LOGFILE
+npm audit fix &>>$LOGFILE
 
- VALIDATE $? "npm audit fix"
+VALIDATE $? "npm audit fix"
 
 systemctl enable catalogue &>>$LOGFILE
 
@@ -93,4 +93,3 @@ mongo --host mongodb.suvarnalaxmiinfradevelopers.online </app/schema/catalogue.j
 
 VALIDATE $? "Loading catalogue data into mongoDB"
 
-#validating script
