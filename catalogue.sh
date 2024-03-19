@@ -39,11 +39,11 @@ VALIDATE $? "Installing NodeJS"
 
 #Once user is created, if you run this script 2nd time then it will be fail
 #this command will defintely fail
-# IMPROVEMENT : Firest check the user already exist or not, if not exist then create
-useradd roboshop &>>$LOGFILE
+# IMPROVEMENT : First check the user already exist or not, if not exist then create
+#####useradd roboshop &>>$LOGFILE
 
 #write a condition to check if directory already exist or not
-mkdir /app &>>$LOGFILE
+######mkdir /app &>>$LOGFILE
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
 
@@ -51,11 +51,11 @@ VALIDATE $? "Downloading catalogue artifact"
 
 cd /app &>>$LOGFILE
 
-VALIDATE $? "Moving to app directory"
+######VALIDATE $? "Moving to app directory"
 
-unzip /tmp/catalogue.zip &>>$LOGFILE
+######unzip /tmp/catalogue.zip &>>$LOGFILE
 
-VALIDATE $? "Unzipping catalogue"
+#####VALIDATE $? "Unzipping catalogue"
 
 cd /app &>>$LOGFILE
 
