@@ -51,11 +51,11 @@ VALIDATE $? "Downloading catalogue artifact"
 
 cd /app &>>$LOGFILE
 
-######VALIDATE $? "Moving to app directory"
+VALIDATE $? "Moving to app directory"
 
-######unzip /tmp/catalogue.zip &>>$LOGFILE
+unzip /tmp/catalogue.zip &>>$LOGFILE
 
-#####VALIDATE $? "Unzipping catalogue"
+VALIDATE $? "Unzipping catalogue"
 
 cd /app &>>$LOGFILE
 
