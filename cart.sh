@@ -45,7 +45,7 @@ VALIDATE $? "Installing NodeJS"
 #write a condition to check if directory already exist or not
 ########mkdir /app &>>$LOGFILE
 
-##########curl -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip &>>$LOGFILE
+curl -L -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip &>>$LOGFILE
 
 VALIDATE $? "Downloading cart artifact"
 
@@ -53,7 +53,7 @@ cd /app &>>$LOGFILE
 
 VALIDATE $? "Moving to app directory"
 
-#######unzip /tmp/cart.zip &>>$LOGFILE
+unzip /tmp/cart.zip &>>$LOGFILE
 
 VALIDATE $? "Unzipping cart"
 
@@ -63,10 +63,9 @@ npm install &>>$LOGFILE
 
 VALIDATE $? "Installing dependencies"
 
-npm audit fix --force
 
 #Give full path of cart.service as we are inside /app
-cp /home/centos/roboshop-shell/cart.service /etc/systemd/system/cart.service &>>$LOGFILE
+cp /roboshop-shell/cart.service /etc/systemd/system/cart.service &>>$LOGFILE
 
 VALIDATE $? "Copying cart.service"
 
