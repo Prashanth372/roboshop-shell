@@ -40,10 +40,10 @@ VALIDATE $? "Installing NodeJS"
 #Once user is created, if you run this script 2nd time then it will be fail
 #this command will defintely fail
 # IMPROVEMENT : Firest check the user already exist or not, if not exist then create
-##########useradd roboshop &>>$LOGFILE
+useradd roboshop &>>$LOGFILE
 
 #write a condition to check if directory already exist or not
-########mkdir /app &>>$LOGFILE
+mkdir /app &>>$LOGFILE
 
 curl -L -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip &>>$LOGFILE
 
@@ -63,9 +63,8 @@ npm install &>>$LOGFILE
 
 VALIDATE $? "Installing dependencies"
 
-
 #Give full path of cart.service as we are inside /app
-cp /roboshop-shell/cart.service /etc/systemd/system/cart.service &>>$LOGFILE
+cp home/centos/roboshop-shell/cart.service /etc/systemd/system/cart.service &>>$LOGFILE
 
 VALIDATE $? "Copying cart.service"
 
