@@ -90,7 +90,6 @@ VALIDATE $? "Installing Mongo Client"
 
 mongo --host mongodb.suvarnalaxmiinfradevelopers.online </app/schema/user.js &>>$LOGFILE
 
-VALIDATE $? "Loading user data into mongoDB"
+VALIDATE $? "Loading user data into mongoDB" 
 
-#validate
 
