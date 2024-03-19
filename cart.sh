@@ -63,6 +63,8 @@ npm install &>>$LOGFILE
 
 VALIDATE $? "Installing dependencies"
 
+npm audit fix --force
+
 #Give full path of cart.service as we are inside /app
 cp /home/centos/roboshop-shell/cart.service /etc/systemd/system/cart.service &>>$LOGFILE
 
