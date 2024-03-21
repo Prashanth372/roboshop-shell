@@ -32,7 +32,7 @@ dnf install maven -y &>> $LOGFILE
 
 VALIDATE $? "Installing Maven"
 
-useradd roboshop &>> $LOGFILE
+##########useradd roboshop &>> $LOGFILE
 
 VALIDATE $? "User added"
 
