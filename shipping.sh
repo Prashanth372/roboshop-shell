@@ -36,7 +36,7 @@ VALIDATE $? "Installing Maven"
 
 VALIDATE $? "User added"
 
-mkdir /app
+##########mkdir /app
 
 VALIDATE $? "Creating app directory"
 
