@@ -9,7 +9,7 @@ SECURITY_GROUP_ID=sg-0143478f1ecc67d53
 #for mysql and mangodb instance_type should be t3.medium, for all others it t2.micro
 for i in "${NAMES[@]}"
 do
-    if [ [ $i == "mongodb" || $i == "mysql" ] ]
+    if [[ $i == "mongodb" || $i == "mysql" ]]
     then 
         INSTANCE_TYPE="t3.medium"
     else
