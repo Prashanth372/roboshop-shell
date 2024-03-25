@@ -4,6 +4,7 @@ NAMES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping"
 INSTANCE_TYPE=""
 IMAGE_ID=ami-0f3c7d07486cad139
 SECURITY_GROUP_ID=sg-0143478f1ecc67d53
+DOMAIN_NAME=suvarnalaxmiinfradevelopers.online
 
 
 #for mysql and mangodb instance_type should be t3.medium, for all others it t2.micro
@@ -17,7 +18,19 @@ do
     fi
     echo "creating $i instance"
 
- IP_ADDRESS=$(aws ec2 run-instances --image-id $IMAGE_ID --count 1 --instance-type $INSTANCE_TYPE  --security-group-ids $SECURITY_GROUP_ID  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" | jq -r '.Instances[0].PrivateIpAddress')
+    IP_ADDRESS=$(aws ec2 run-instances --image-id $IMAGE_ID --count 1 --instance-type $INSTANCE_TYPE  --security-group-ids $SECURITY_GROUP_ID  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" | jq -r '.Instances[0].PrivateIpAddress')
+    echo "created $i instance : $IP_ADDRESS"
 
-echo "created $i instance : $IP_ADDRESS"
+    aws route53 change-resource-record-sets --hosted-zone-id Z029950121S2LJBS9H34Q --change-batch '
+    {
+            "Changes": [{
+            "Action": "CREATE",
+                        "ResourceRecordSet": {
+                                "Name": "'$i.$DOMAIN_NAME'",
+                                "Type": "A",
+                                "TTL": 300,
+                                "ResourceRecords": [{ "Value": "'$IP_ADDRESS'"}]
+                            }}]
+    }
+    '
  done   
