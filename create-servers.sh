@@ -5,6 +5,7 @@ INSTANCE_TYPE=""
 IMAGE_ID=ami-0f3c7d07486cad139 
 SECURITY_GROUP_ID=sg-0b3b9c55ae9cd0318 
 DOMAIN_NAME=suvarnalaxmiinfradevelopers.online
+HOSTED_ZONE_ID=Z07758712TJEH3FJTMWZ0
 
 
 #for mysql and mangodb instance_type should be t3.medium, for all others it t2.micro
