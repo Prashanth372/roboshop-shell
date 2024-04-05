@@ -1,14 +1,14 @@
 #!/bin/bash
 
-NAMES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web" )
+NAMES=$@
 INSTANCE_TYPE=""
-IMAGE_ID=ami-0f3c7d07486cad139
-SECURITY_GROUP_ID=sg-0143478f1ecc67d53
+IMAGE_ID=ami-0f3c7d07486cad139 
+SECURITY_GROUP_ID=sg-0b3b9c55ae9cd0318 
 DOMAIN_NAME=suvarnalaxmiinfradevelopers.online
 
 
 #for mysql and mangodb instance_type should be t3.medium, for all others it t2.micro
-for i in "${NAMES[@]}"
+for i in $@
 do
     if [[ $i == "mongodb" || $i == "mysql" ]]
     then 
@@ -21,7 +21,7 @@ do
     IP_ADDRESS=$(aws ec2 run-instances --image-id $IMAGE_ID --count 1 --instance-type $INSTANCE_TYPE  --security-group-ids $SECURITY_GROUP_ID  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" | jq -r '.Instances[0].PrivateIpAddress')
     echo "created $i instance : $IP_ADDRESS"
 
-    aws route53 change-resource-record-sets --hosted-zone-id Z0355686B9U964BDJZ0B --change-batch '
+    aws route53 change-resource-record-sets --hosted-zone-id Z07758712TJEH3FJTMWZ0 --change-batch '
     {
             "Changes": [{
             "Action": "CREATE",
